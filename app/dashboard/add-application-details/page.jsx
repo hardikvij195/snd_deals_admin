@@ -2,23 +2,25 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabaseBrowser } from "@/lib/supabaseBrowser";
 import { showToast } from "@/hooks/useToast";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ChevronLeft } from "lucide-react";
 import Link from "next/link";
-import ApplicantForm from "./ApplicantForm"; // Import the new component
-import CoApplicantForm from "./CoApplicantForm"; // Import the new component
-import CarApplicationForm from "./CarApplicationForm"; // Import the new component
+import ApplicantForm from "./ApplicantForm";
+import CoApplicantForm from "./CoApplicantForm";
+import CarApplicationForm from "./CarApplicationForm";
 
 const PhoneInput = dynamic(() => import("react-phone-input-2"), { ssr: false });
 
 export default function AddApplicationDetailsPage() {
   const router = useRouter();
   const [saving, setSaving] = useState(false);
-  const [activeTab, setActiveTab] = useState("applicant"); // State to manage the active tab
+  const [activeTab, setActiveTab] = useState("applicant");
+  const [backButtonRoute, setBackButtonRoute] = useState("/dashboard/my-applications");
+  const [loadingRole, setLoadingRole] = useState(true);
 
   // We'll manage the form data for each tab separately
   const [applicantData, setApplicantData] = useState({
@@ -35,6 +37,41 @@ export default function AddApplicationDetailsPage() {
   const [carApplicationData, setCarApplicationData] = useState({
     // Initial state for car application
   });
+  
+  useEffect(() => {
+    async function fetchUserRole() {
+      setLoadingRole(true);
+      try {
+        const { data: { user } } = await supabaseBrowser.auth.getUser();
+        if (user) {
+          const { data: profileData, error: profileError } = await supabaseBrowser
+            .from('users')
+            .select('role')
+            .eq('id', user.id)
+            .single();
+
+          if (profileError) {
+            console.error("Error fetching user profile:", profileError);
+            // Default to salesrep view if profile fetching fails
+            setBackButtonRoute("/dashboard/my-applications");
+          } else if (profileData?.role === "admin" || profileData?.role === "superadmin") {
+            setBackButtonRoute("/dashboard/applications");
+          } else {
+            // Default to salesrep view for any other role
+            setBackButtonRoute("/dashboard/my-applications");
+          }
+        }
+      } catch (error) {
+        console.error("Authentication or role fetching error:", error);
+        // Default to salesrep view on any error
+        setBackButtonRoute("/dashboard/my-applications");
+      } finally {
+        setLoadingRole(false);
+      }
+    }
+
+    fetchUserRole();
+  }, []);
 
   const handleAddNewApplication = async () => {
     setSaving(true);
@@ -42,7 +79,7 @@ export default function AddApplicationDetailsPage() {
       if (!applicantData.title || !applicantData.email || !applicantData.phone) {
         throw new Error("Name, Email, and Phone are required!");
       }
-      
+
       const { data: { user }, error: userError } = await supabaseBrowser.auth.getUser();
       if (userError || !user) {
         throw new Error("User not authenticated. Please sign in to create an application.");
@@ -71,7 +108,7 @@ export default function AddApplicationDetailsPage() {
         description: "Application created successfully!",
       });
 
-      router.push('/dashboard/applications');
+      router.push(backButtonRoute);
     } catch (error) {
       console.error("Add new application error:", error);
       showToast({
@@ -100,16 +137,16 @@ export default function AddApplicationDetailsPage() {
   return (
     <div className="p-4 md:p-6 bg-white min-h-screen">
       <div className=" mx-auto">
-        <div className="flex items-center gap-4 mb-6">
+        <div className="flex items-center gap-2 mb-6">
           <Link
-            href='/dashboard/my-applications'
+            href={backButtonRoute}
             className="text-gray-600 hover:text-gray-800"
           >
-            <ArrowLeft className="h-6 w-6" />
+            <ChevronLeft className="h-4 w-4" />
           </Link>
-          <h1 className="text-2xl font-bold text-gray-800">Add New Application</h1>
+          <h1 className="text-md text-gray-500">Applications</h1>
         </div>
-        
+
         {/* Tab Navigation Buttons */}
         <div className="flex border-b border-gray-200 mb-6">
           <button
@@ -153,7 +190,7 @@ export default function AddApplicationDetailsPage() {
         <div className="flex justify-end gap-2 pt-4">
           <Button
             variant="outline"
-            onClick={() => router.push('/dashboard/applications')}
+            onClick={() => router.push(backButtonRoute)}
             disabled={saving}
           >
             Cancel

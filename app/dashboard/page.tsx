@@ -37,41 +37,39 @@ export default function AdminDashboard() {
     totalApplications: 0,
   });
 
+  useEffect(() => {
+    const fetchStats = async () => {
+      const {
+        data: applicationsArray,
+        count: applicationsCount,
+        error: applicationsError,
+      } = await supabaseBrowser
+        .from("applications")
+        .select("id", { count: "exact" });
 
- useEffect(() => {
-  const fetchStats = async () => {
-    const {
-      data: applicationsArray,
-      count: applicationsCount,
-      error: applicationsError,
-    } = await supabaseBrowser
-      .from("applications")
-      .select("id", { count: "exact" });
+      if (applicationsError) {
+        console.error("Error fetching applications count:", applicationsError);
+        return;
+      }
 
-    if (applicationsError) {
-      console.error("Error fetching applications count:", applicationsError);
-      return;
-    }
+      const totalApplications = applicationsCount || 0;
 
-    const totalApplications = applicationsCount || 0;
+      const fullStats = {
+        totalApplications,
+        totalUsers: 0, // Placeholder until you implement
+        activeSubscribers: 0, // Placeholder
+        totalRevenue: 0, // Placeholder
+        chartData: [],
+        chartLabels: [], // ✅ Add this
+        SeminarTabName: "", // Placeholder or proper chart data
+      };
 
-    const fullStats = {
-      totalApplications,
-      totalUsers: 0,           // Placeholder until you implement
-      activeSubscribers: 0,    // Placeholder
-      totalRevenue: 0,         // Placeholder
-      chartData: [], 
-        chartLabels: [],          // ✅ Add this
-  SeminarTabName: "",           // Placeholder or proper chart data
+      setStats(fullStats);
+      dispatch(setDashboardStats(fullStats));
     };
 
-    setStats(fullStats);
-    dispatch(setDashboardStats(fullStats));
-  };
-
-  fetchStats();
-}, [dispatch]);
-
+    fetchStats();
+  }, [dispatch]);
 
   return (
     <div className="flex min-h-screen ">

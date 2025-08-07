@@ -1,4 +1,3 @@
-// app/dashboard/applications/page.jsx
 "use client";
 
 import dynamic from "next/dynamic";
@@ -11,8 +10,8 @@ import {
   FileText,
   Search,
   Plus,
+  Lock,
 } from "lucide-react";
-import ComingSoon from "@/components/ui/coming-soon";
 import { supabaseBrowser } from "@/lib/supabaseBrowser";
 import {
   Dialog,
@@ -27,14 +26,16 @@ import Modal from "../_components/Modal";
 import { Card, CardContent } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
 import { showToast } from "@/hooks/useToast";
-import { exportToExcel } from "@/lib/exportToExcel";
 import PaginationBar from "../_components/Pagination";
-
-// The AddApplicataion import is no longer needed here.
 
 // Import PhoneInput as it will be used for contact details
 const PhoneInput = dynamic(() => import("react-phone-input-2"), { ssr: false });
 
+/**
+ * Renders a page to manage applications. It includes features to view, search,
+ * add, edit, and delete application records from a Supabase table. Access to
+ * this entire page is now restricted to users with 'salesrep' role.
+ */
 export default function ApplicationPage() {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
@@ -64,6 +65,46 @@ export default function ApplicationPage() {
     updated_at: "",
   });
   const [deleteRefresh, setDeleteRefresh] = useState(null);
+  
+  // State for role-based access control
+  const [userRole, setUserRole] = useState(null);
+  const [isAuthLoading, setIsAuthLoading] = useState(true);
+
+  /**
+   * Fetches the user's role from the 'users' table in Supabase.
+   */
+  useEffect(() => {
+    const fetchUserRole = async () => {
+      try {
+        const { data: { session }, error } = await supabaseBrowser.auth.getSession();
+        if (error) {
+          console.error("Error fetching session:", error);
+          setIsAuthLoading(false);
+          return;
+        }
+
+        if (session) {
+          const userUid = session.user?.id;
+          if (userUid) {
+            const { data: userData, error: userError } = await supabaseBrowser
+              .from('users')
+              .select('role')
+              .eq('id', userUid)
+              .single();
+
+            if (userError) {
+              console.error("Error fetching user role:", userError);
+            } else if (userData) {
+              setUserRole(userData.role);
+            }
+          }
+        }
+      } finally {
+        setIsAuthLoading(false);
+      }
+    };
+    fetchUserRole();
+  }, []);
 
   const handleRefresh = () => {
     setPage(1);
@@ -128,6 +169,32 @@ export default function ApplicationPage() {
     );
   }, [applications, searchTerm]);
 
+  // Loading state for auth
+  if (isAuthLoading) {
+    return (
+      <div className="flex flex-col items-center justify-center p-6 text-center h-screen">
+        <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <h2 className="text-lg font-semibold text-gray-800">Loading User Information...</h2>
+        <p className="text-sm text-gray-500 mt-2 max-w-sm">
+          Please wait while we verify your access rights.
+        </p>
+      </div>
+    );
+  }
+
+  // --- NEW ACCESS DENIED LOGIC ---
+  // If the user's role is not 'salesrep', deny access to the entire page.
+  if (userRole !== "salesrep") {
+    return (
+      <div className="flex flex-col items-center justify-center p-6 text-center h-screen">
+        <Lock className="h-16 w-16 mb-4 text-red-500" />
+        <h2 className="text-2xl font-bold text-red-700">Access Denied</h2>
+        <p className="text-lg text-gray-600 mt-2">You do not have the necessary permissions to view this page.</p>
+      </div>
+    );
+  }
+
+  // Loading state for applications, shown after the role check has passed
   if (loading && applications.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center p-6 text-center h-screen">
@@ -139,11 +206,15 @@ export default function ApplicationPage() {
       </div>
     );
   }
-
+  
   if (error) {
     return (
       <div className="space-y-6 p-4 md:p-6">
-        <ComingSoon />
+        <div className="flex flex-col items-center justify-center p-6 text-center text-red-500">
+          <Info className="h-16 w-16 mb-4" />
+          <h2 className="text-2xl font-bold">Error</h2>
+          <p className="text-lg">{error}</p>
+        </div>
       </div>
     );
   }
@@ -178,31 +249,6 @@ export default function ApplicationPage() {
   const handleEditForm = (application) => {
     setEditApplication(application);
     setIsEditing(true);
-  };
-
-  const handleExportFile = async () => {
-    try {
-      const { data, error } = await supabaseBrowser
-        .from("applications")
-        .select("*")
-        .order("created_at", { ascending: false });
-
-      if (error) {
-        throw new Error("Failed to fetch data for export!");
-      }
-      await exportToExcel(data, "applications");
-      showToast({
-        title: "Success",
-        description: "Application data exported successfully!",
-      });
-    } catch (error) {
-      console.error("Export error:", error);
-      showToast({
-        type: "error",
-        title: "Error",
-        description: error?.message || "Something went wrong during export!",
-      });
-    }
   };
 
   const handleUpdateApplication = async () => {
@@ -273,15 +319,16 @@ export default function ApplicationPage() {
               disabled={loading && applications.length === 0}
             />
           </form>
-
-          {/* This button now navigates to the new page */}
+        </div>
+        
+        {/* Floating action button to add a new application, now only for roles that can access the page */}
+        <div className="bg-white">
           <button
             onClick={() => router.push('/dashboard/add-application-details')}
-            className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-md shadow-md hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 transition-colors duration-200 w-full sm:w-auto justify-center"
+            className="fixed bottom-6 right-6 z-50 rounded-full p-4 bg-blue-600 text-white shadow-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 transition-colors"
             title="Add New Application"
           >
-            <Plus className="h-5 w-5" />
-            <span>Add Application</span>
+            <Plus className="h-6 w-6" />
           </button>
         </div>
 

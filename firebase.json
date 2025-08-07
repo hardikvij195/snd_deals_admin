@@ -1,7 +1,13 @@
 {
   "hosting": {
     "source": ".",
-    "site": "snd-deals",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "frameworksBackend": {
+      "region": "us-east1"
+    }
   }
 }

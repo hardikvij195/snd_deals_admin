@@ -26,6 +26,7 @@ const pathName: any = {
    "/dashboard/applications": "Applications",
     "/dashboard/reports": "Reports",
     "/dashboard/my-applications": "My Applications",
+    "/dashboard/add-application-details":"Add New Application",
 };
 
 const Navbar = ({ setCollapsed, collapsed }: NavbarProps) => {
