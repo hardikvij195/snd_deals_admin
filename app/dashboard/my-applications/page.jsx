@@ -68,6 +68,7 @@ export default function ApplicationPage() {
   
   // State for role-based access control
   const [userRole, setUserRole] = useState(null);
+    const [userUid, setUserUid] = useState(null);
   const [isAuthLoading, setIsAuthLoading] = useState(true);
 
   /**
@@ -84,7 +85,11 @@ export default function ApplicationPage() {
         }
 
         if (session) {
+          const userId = session.user?.id;
+          setUserUid(userId);
           const userUid = session.user?.id;
+          console.log("User Id:", userUid)
+
           if (userUid) {
             const { data: userData, error: userError } = await supabaseBrowser
               .from('users')
@@ -111,12 +116,18 @@ export default function ApplicationPage() {
     setDeleteRefresh(Math.random());
   };
 
-  const handleFetchApplications = useCallback(async () => {
+   const handleFetchApplications = useCallback(async () => {
     setLoading(true);
     try {
+      if (!userUid) {
+        setLoading(false);
+        return;
+      }
+
       let query = supabaseBrowser
         .from("applications")
         .select("*", { count: "exact" })
+        .eq("user_id", userUid) // Filter by the current user's ID
         .order("created_at", { ascending: false });
 
       if (searchTerm) {
@@ -144,7 +155,7 @@ export default function ApplicationPage() {
     } finally {
       setLoading(false);
     }
-  }, [page, limit, searchTerm]);
+  }, [page, limit, searchTerm, userUid]);
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -309,7 +320,7 @@ export default function ApplicationPage() {
           >
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
-              placeholder="Search by Name, Email, or Phone..."
+              placeholder="Search by Name, Applicant Name,  Email, or Phone..."
               className="pl-9 pr-4 py-2 border rounded-md w-full"
               value={searchTerm}
               onChange={(e) => {

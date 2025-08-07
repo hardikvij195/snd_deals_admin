@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Sign N Drive_Admin",
+  title: "SND deals",
 };
 
 

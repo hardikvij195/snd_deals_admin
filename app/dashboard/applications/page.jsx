@@ -25,14 +25,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { showToast } from "@/hooks/useToast";
 import PaginationBar from "../_components/Pagination";
 
-// The PhoneInput component import from the previous version has been removed
-// as it was not used in the provided code snippet.
 
-/**
- * Renders a page to manage applications. It includes features to view, search,
- * add, edit, and delete application records from a Supabase table. Access to
- * this page is restricted to users with 'admin' or 'superadmin' roles.
- */
 export default function ApplicationPage() {
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -314,7 +307,7 @@ export default function ApplicationPage() {
         <div className="relative flex-1 mb-5 ">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder="Search by Name or Email..."
+            placeholder="Search by Name, Applicant Name, Date, Phone or Email..."
             className="pl-9"
             value={searchTerm}
             disabled={loading}

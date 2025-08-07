@@ -13,6 +13,7 @@ import {
   BookUser,
   BarChart3,
   Loader,
+  User
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -66,6 +67,7 @@ export default function Sidebar({ collapsed }: SidebarProps) {
           { title: "Deals", href: "/dashboard/dealboard", icon: ChartColumnDecreasing },
           { title: "Teams", href: "/dashboard/teammanagement", icon: Users },
           { title: "Report", href: "/dashboard/reports", icon: BarChart3 },
+          { title: "Profile", href: "/dashboard/profile", icon: User },
         ];
       case "admin":
         return [
@@ -73,16 +75,19 @@ export default function Sidebar({ collapsed }: SidebarProps) {
           { title: "Applications", href: "/dashboard/applications", icon: File },
           { title: "Deals", href: "/dashboard/dealboard", icon: ChartColumnDecreasing },
           { title: "Report", href: "/dashboard/reports", icon: BarChart3 },
+           { title: "Profile", href: "/dashboard/profile", icon: User },
         ];
       case "salesrep":
         return [
           { title: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
           { title: "My Applications", href: "/dashboard/my-applications", icon: FileText },
+           { title: "Profile", href: "/dashboard/profile", icon: User },
         ];
       case "financerep":
         return [
           { title: "Applications Board", href: "/dashboard/applications-board", icon: File },
           { title: "My Deals", href: "/dashboard/my-deals", icon: CreditCard },
+           { title: "Profile", href: "/dashboard/profile", icon: User },
         ];
       default:
         return [];

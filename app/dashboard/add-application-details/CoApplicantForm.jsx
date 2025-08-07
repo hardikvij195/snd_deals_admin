@@ -57,7 +57,7 @@ const CoApplicantForm = () => {
             className="p-2 h-auto"
             variant="ghost"
           >
-            {dealInformationExpanded ? <Minus size={20} /> : <Plus size={20} />}
+            {dealInformationExpanded ? <div className="bg-blue-500 px-2 py-1 text-white font-light rounded-sm shadow-md w-14">Hide</div> : <div className="bg-blue-500 px-2 py-1 text-white font-light rounded-sm shadow-md w-14">Show</div>}
           </Button>
         </div>
 
@@ -206,7 +206,7 @@ const CoApplicantForm = () => {
                   className="p-2 h-auto"
                   variant="ghost"
                 >
-                  {isPersonalExpanded ? <Minus size={20} /> : <Plus size={20} />}
+                  {isPersonalExpanded ? <div className="bg-blue-500 px-2 py-1 text-white font-light rounded-sm shadow-md w-14">Hide</div> : <div className="bg-blue-500 px-2 py-1 text-white font-light rounded-sm shadow-md w-14">Show</div>}
                 </Button>
               </div>
         
@@ -318,7 +318,7 @@ const CoApplicantForm = () => {
                   className="p-2 h-auto"
                   variant="ghost"
                 >
-                  {isAddressExpanded ? <Minus size={20} /> : <Plus size={20} />}
+                  {isAddressExpanded ? <div className="bg-blue-500 px-2 py-1 text-white font-light rounded-sm shadow-md w-14">Hide</div> : <div className="bg-blue-500 px-2 py-1 text-white font-light rounded-sm shadow-md w-14">Show</div>}
                 </Button>
               </div>
         
@@ -384,7 +384,7 @@ const CoApplicantForm = () => {
                   className="p-2 h-auto"
                   variant="ghost"
                 >
-                  {isHomeDetailsExpanded ? <Minus size={20} /> : <Plus size={20} />}
+                  {isHomeDetailsExpanded ? <div className="bg-blue-500 px-2 py-1 text-white font-light rounded-sm shadow-md w-14">Hide</div> : <div className="bg-blue-500 px-2 py-1 text-white font-light rounded-sm shadow-md w-14">Show</div>}
                 </Button>
               </div>
         
@@ -423,7 +423,7 @@ const CoApplicantForm = () => {
                   className="p-2 h-auto"
                   variant="ghost"
                 >
-                  {isEmploymentExpanded ? <Minus size={20} /> : <Plus size={20} />}
+                  {isEmploymentExpanded ? <div className="bg-blue-500 px-2 py-1 text-white font-light rounded-sm shadow-md w-14">Hide</div> : <div className="bg-blue-500 px-2 py-1 text-white font-light rounded-sm shadow-md w-14">Show</div>}
                 </Button>
               </div>
         
@@ -526,7 +526,7 @@ const CoApplicantForm = () => {
                   className="p-2 h-auto"
                   variant="ghost"
                 >
-                  {isIncomeExpanded ? <Minus size={20} /> : <Plus size={20} />}
+                  {isIncomeExpanded ? <div className="bg-blue-500 px-2 py-1 text-white font-light rounded-sm shadow-md w-14">Hide</div> : <div className="bg-blue-500 px-2 py-1 text-white font-light rounded-sm shadow-md w-14">Show</div>}
                 </Button>
               </div>
         
@@ -581,7 +581,7 @@ const CoApplicantForm = () => {
                   className="p-2 h-auto"
                   variant="ghost"
                 >
-                  {isFinancialSummary ? <Minus size={20} /> : <Plus size={20} />}
+                  {isFinancialSummary ? <div className="bg-blue-500 px-2 py-1 text-white font-light rounded-sm shadow-md w-14">Hide</div> : <div className="bg-blue-500 px-2 py-1 text-white font-light rounded-sm shadow-md w-14">Show</div>}
                 </Button>
               </div>
               {isFinancialSummary && (
@@ -700,7 +700,7 @@ const CoApplicantForm = () => {
                   className="p-2 h-auto"
                   variant="ghost"
                 >
-                  {isAssetsExpanded ? <Minus size={20} /> : <Plus size={20} />}
+                  {isAssetsExpanded ? <div className="bg-blue-500 px-2 py-1 text-white font-light rounded-sm shadow-md w-14">Hide</div> : <div className="bg-blue-500 px-2 py-1 text-white font-light rounded-sm shadow-md w-14">Show</div>}
                 </Button>
               </div>
                {isAssetsExpanded && (

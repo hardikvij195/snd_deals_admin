@@ -22,11 +22,14 @@ const pathName: any = {
   "/dashboard/financemanager": "Finanace Manager",
   "/dashboard/subscription": "Manage Subscription",
   "/dashboard/dealforms": "Deal Forms",
-  "/dashboard/dealboard": "Deals Board",
-   "/dashboard/applications": "Applications",
-    "/dashboard/reports": "Reports",
-    "/dashboard/my-applications": "My Applications",
-    "/dashboard/add-application-details":"Add New Application",
+  "/dashboard/dealboard": "Deals",
+  "/dashboard/applications": "Applications",
+  "/dashboard/reports": "Reports",
+  "/dashboard/my-applications": "My Applications",
+  "/dashboard/add-application-details": "Add New Application",
+  "/dashboard/applications-board":"Applications",
+  "/dashboard/my-deals" :"Deals",
+  "/dashboard/profile" :"Profile"
 };
 
 const Navbar = ({ setCollapsed, collapsed }: NavbarProps) => {
@@ -307,18 +310,18 @@ const Navbar = ({ setCollapsed, collapsed }: NavbarProps) => {
   return (
     <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6">
       <div className="flex items-center space-x-2">
-       <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setCollapsed?.(!collapsed)}
-            className="h-10 w-8"
-          >
-            {collapsed ? (
-              <ChevronRight className="h-6 w-6" />
-            ) : (
-              <ChevronLeft className="h-6 w-6" />
-            )}
-          </Button>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => setCollapsed?.(!collapsed)}
+          className="h-10 w-8"
+        >
+          {collapsed ? (
+            <ChevronRight className="h-6 w-6" />
+          ) : (
+            <ChevronLeft className="h-6 w-6" />
+          )}
+        </Button>
         <span className="lg:text-lg md:text-md text-sm font-bold text-gray-800">
           {(() => {
             const title =
@@ -329,9 +332,23 @@ const Navbar = ({ setCollapsed, collapsed }: NavbarProps) => {
               "";
 
             if (pathname === "/dashboard" && userRole) {
-              return `${title} - ${
-                userRole.charAt(0).toUpperCase() + userRole.slice(1)
-              }`;
+              const roleMapping: {
+                superadmin: string;
+                admin: string;
+                salesrep: string;
+                financerep: string;
+              } = {
+                superadmin: "Super Admin",
+                admin: "Admin",
+                salesrep: "Sales",
+                financerep: "Finance",
+              };
+
+              // The fix is here: tell TypeScript that userRole is a key of roleMapping
+              const formattedRole =
+                roleMapping[userRole as keyof typeof roleMapping] || userRole;
+
+              return `${title} - ${formattedRole}`;
             }
 
             return title;

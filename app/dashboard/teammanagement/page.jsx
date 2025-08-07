@@ -476,7 +476,7 @@ export default function AdminPage() {
           <div className="flex flex-col justify-center items-center text-gray-900 p-6 border rounded-lg bg-gray-50 mt-8">
             <FileText className="w-16 h-16 text-gray-400 mb-4" />
             <h2 className="text-2xl font-semibold mb-2">
-              No Admin Users Found
+              No Users Found
             </h2>
             <p className="text-gray-500 text-center max-w-md">
               It looks like there are no administrative users matching your
