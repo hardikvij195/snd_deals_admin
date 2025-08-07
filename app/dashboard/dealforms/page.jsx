@@ -25,12 +25,12 @@ import {
 
 // Define the Deal status options
 const statusOptions = [
-  "New",
-  "Contacted",
-  "Proposal Sent",
-  "Negotiation",
-  "Closed - Won",
-  "Closed - Lost",
+  "Draft",
+  "Submitted",
+  "Under-Review",
+  "Approved",
+  "Rejected",
+
 ];
 
 export default function AddDealForm() {
