@@ -1,0 +1,7 @@
+{
+  "hosting": {
+    "source": ".",
+    "site": "snd-deals",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  }
+}
