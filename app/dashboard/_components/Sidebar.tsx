@@ -85,6 +85,7 @@ export default function Sidebar({ collapsed }: SidebarProps) {
         ];
       case "financerep":
         return [
+           { title: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
           { title: "Applications Board", href: "/dashboard/applications-board", icon: File },
           { title: "My Deals", href: "/dashboard/my-deals", icon: CreditCard },
            { title: "Profile", href: "/dashboard/profile", icon: User },

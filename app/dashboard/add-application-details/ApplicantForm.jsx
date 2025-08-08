@@ -547,7 +547,7 @@ const ApplicantForm = ({ data, setData }) => {
      {isAssetsExpanded && (
     <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
         {/* Assets Section */}
-        <h4 className="font-bold text-md my-5 col-span-full">Assets</h4>
+        <h4 className="font-bold text-md col-span-full">Assets :</h4>
         
         {/* Assets Form Fields */}
         <div className="space-y-1">
@@ -568,7 +568,7 @@ const ApplicantForm = ({ data, setData }) => {
         </div>
 
         {/* Liabilities Section */}
-        <h4 className="font-bold text-md my-5 col-span-full">Liabilities</h4>
+        <h4 className="font-bold text-md  col-span-full">Liabilities :</h4>
         
         {/* Liabilities Form Fields */}
         <div className="space-y-1">

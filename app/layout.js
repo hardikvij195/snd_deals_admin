@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "SND deals",
+  title: "SND Deals",
 };
 
 
