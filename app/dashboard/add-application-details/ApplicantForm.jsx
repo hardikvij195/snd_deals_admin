@@ -22,7 +22,7 @@ const ApplicantForm = ({ data, setData }) => {
   return (
     <div>
       {/* Personal Information Section */}
-      <div className="mb-20 space-y-2">
+      <div className="mb-10 space-y-1">
       <h1 className="font-bold text-3xl">Applicant Deal Management</h1>
       <h3 className="text-gray-400">Manage applicant details for automative deals</h3>
       </div>
@@ -38,28 +38,28 @@ const ApplicantForm = ({ data, setData }) => {
       </div>
 
       {isPersonalExpanded && (
-        <div className="grid lg:grid-cols-2 grid-cols-1 gap-6">
-          <div className="space-y-2">
+        <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Salutation </label>
             <Input />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">First Name</label>
             <Input />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Middle Name</label>
             <Input />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Last Name</label>
             <Input />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Suffix</label>
             <Input />
           </div>
-          <div className="space-y-2 flex flex-col">
+          <div className="space-y-1 flex flex-col">
             <label className="text-[13px] font-semibold">Gender</label>
             <select className="border border-gray-300 p-2 rounded-md">
               <option>Select Gender</option>
@@ -68,7 +68,7 @@ const ApplicantForm = ({ data, setData }) => {
               <option>Others</option>
             </select>
           </div>
-          <div className="space-y-2 flex flex-col">
+          <div className="space-y-1 flex flex-col">
             <label className="text-[13px] font-semibold">Marital Status</label>
             <select className="border border-gray-300 p-2 rounded-md">
               <option>Select Status</option>
@@ -77,14 +77,14 @@ const ApplicantForm = ({ data, setData }) => {
             </select>
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">
               SIN (Social Insurance Number)
             </label>
             <Input />
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Phone</label>
             <PhoneInput
               country="ca"
@@ -102,7 +102,7 @@ const ApplicantForm = ({ data, setData }) => {
               required
             />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Mobile Phone</label>
             <PhoneInput
               country="ca"
@@ -125,7 +125,7 @@ const ApplicantForm = ({ data, setData }) => {
             <Input type="date" />
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Email</label>
             <Input
               type="email"
@@ -135,13 +135,13 @@ const ApplicantForm = ({ data, setData }) => {
             />
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">
               Relation To Primary
             </label>
             <Input />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">
               Language Of Correspondence
             </label>
@@ -164,48 +164,48 @@ const ApplicantForm = ({ data, setData }) => {
 
       {isAddressExpanded && (
         <>
-          <div className="space-y-2 mb-5">
+          <div className="space-y-1 mb-5">
             <label className="text-[13px] font-semibold">Postal Code :</label>
             <Input />
           </div>
-          <div className="grid lg:grid-cols-2 grid-cols-1 gap-6">
-            <div className="space-y-2">
+          <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
+            <div className="space-y-1">
               <label className="text-[13px] font-semibold">Address Type</label>
               <Input />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
               <label className="text-[13px] font-semibold">Suite No :</label>
               <Input />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
               <label className="text-[13px] font-semibold">Address No :</label>
               <Input />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
               <label className="text-[13px] font-semibold">Street Name :</label>
               <Input />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
               <label className="text-[13px] font-semibold">Street type </label>
               <Input />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
               <label className="text-[13px] font-semibold">Direction</label>
               <Input />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
               <label className="text-[13px] font-semibold">City</label>
               <Input />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
               <label className="text-[13px] font-semibold">Province</label>
               <Input />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
               <label className="text-[13px] font-semibold">Duration (Years)</label>
               <Input />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
               <label className="text-[13px] font-semibold">Duration (Months)</label>
               <Input />
             </div>
@@ -230,24 +230,24 @@ const ApplicantForm = ({ data, setData }) => {
 
       {isHomeDetailsExpanded && (
         <>
-          <div className="space-y-2 mb-5">
+          <div className="space-y-1 mb-5">
             <label className="text-[13px] font-semibold">Home Type</label>
             <Input />
           </div>
-          <div className="grid lg:grid-cols-2 grid-cols-1 gap-6">
-            <div className="space-y-2">
+          <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
+            <div className="space-y-1">
               <label className="text-[13px] font-semibold">Market Value </label>
               <Input />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
               <label className="text-[13px] font-semibold">Mortgage Amount </label>
               <Input />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
               <label className="text-[13px] font-semibold">Monthly Payment </label>
               <Input />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
               <label className="text-[13px] font-semibold">Mortgage Holder </label>
               <Input />
             </div>
@@ -268,8 +268,8 @@ const ApplicantForm = ({ data, setData }) => {
       </div>
 
       {isEmploymentExpanded && (
-        <div className="grid grid-cols-1 gap-6">
-          <div className="space-y-2 flex flex-col">
+        <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
+          <div className="space-y-1 flex flex-col">
             <label className="text-[13px] font-semibold">Type</label>
             <select className="border border-gray-300 p-2 rounded-md">
               <option>Select Type</option>
@@ -277,11 +277,11 @@ const ApplicantForm = ({ data, setData }) => {
               <option>Type 2</option>
             </select>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Employer</label>
             <Input />
           </div>
-          <div className="space-y-2 flex flex-col">
+          <div className="space-y-1 flex flex-col">
             <label className="text-[13px] font-semibold">Status</label>
             <select className="border border-gray-300 p-2 rounded-md">
               <option>Select Status</option>
@@ -289,11 +289,11 @@ const ApplicantForm = ({ data, setData }) => {
               <option>Type 2</option>
             </select>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Occupation</label>
             <Input />
           </div>
-          <div className="space-y-2 flex gap-6">
+          <div className="space-y-1 flex gap-4">
             <div className="w-1/2">
               <label className="text-[13px] font-semibold">Years</label>
               <Input />
@@ -303,7 +303,7 @@ const ApplicantForm = ({ data, setData }) => {
               <Input />
             </div>
           </div>
-          <div className="space-y-2 flex flex-col">
+          <div className="space-y-1 flex flex-col">
             <label className="text-[13px] font-semibold">Address Type</label>
             <select className="border border-gray-300 p-2 rounded-md">
               <option>Select Address Type</option>
@@ -311,47 +311,47 @@ const ApplicantForm = ({ data, setData }) => {
               <option>Type 2</option>
             </select>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Suite No.</label>
             <Input />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Address No.</label>
             <Input />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Street Name</label>
             <Input />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Street Type</label>
             <Input />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">City</label>
             <Input />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Province</label>
             <Input />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Postal Code </label>
             <Input />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Phone</label>
             <Input />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Direction</label>
             <Input />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Duration (Years)</label>
             <Input />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Duration (Months)</label>
             <Input />
           </div>
@@ -371,12 +371,12 @@ const ApplicantForm = ({ data, setData }) => {
       </div>
 
       {isIncomeExpanded && (
-        <div className="grid grid-cols-1 gap-6">
-          <div className="space-y-2">
+        <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Gross Income</label>
             <Input />
           </div>
-          <div className="space-y-2 flex flex-col">
+          <div className="space-y-1 flex flex-col">
             <label className="text-[13px] font-semibold">Per</label>
             <select className="border border-gray-300 p-2 rounded-md">
               <option>Select Type</option>
@@ -384,7 +384,7 @@ const ApplicantForm = ({ data, setData }) => {
               <option>Type 2</option>
             </select>
           </div>
-          <div className="space-y-2 flex flex-col">
+          <div className="space-y-1 flex flex-col">
             <label className="text-[13px] font-semibold">Other Income Type</label>
             <select className="border border-gray-300 p-2 rounded-md">
               <option>Select Type</option>
@@ -392,11 +392,11 @@ const ApplicantForm = ({ data, setData }) => {
               <option>Type 2</option>
             </select>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Other Income</label>
             <Input />
           </div>
-          <div className="space-y-2 flex flex-col">
+          <div className="space-y-1 flex flex-col">
             <label className="text-[13px] font-semibold">Per</label>
             <select className="border border-gray-300 p-2 rounded-md">
               <option>Select Type</option>
@@ -404,11 +404,11 @@ const ApplicantForm = ({ data, setData }) => {
               <option>Type 2</option>
             </select>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Other Description</label>
             <Input />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Annual Total</label>
             <Input />
           </div>
@@ -425,18 +425,18 @@ const ApplicantForm = ({ data, setData }) => {
         </Button>
       </div>
       {isFinancialSummary && (
-        <div className="grid grid-cols-1 gap-6">
-             <div className="space-y-2">
+        <div className="grid grid-cols-2 gap-4">
+             <div className="space-y-1">
             <label className="text-[13px] font-semibold">Bank Name</label>
             <Input
             placeholder="Enter Bank Name" />
           </div>
-           <div className="space-y-2">
+           <div className="space-y-1">
             <label className="text-[13px] font-semibold">Contact Name</label>
             <Input
             placeholder="Enter Contact Name" />
           </div>
-          <div className="space-y-2 flex gap-6">
+          <div className="space-y-1 flex gap-4">
             <div className="w-1/2">
               <label className="text-[13px] font-semibold">Phone</label>
               <Input
@@ -448,12 +448,12 @@ const ApplicantForm = ({ data, setData }) => {
               placeholder="Ext"/>
             </div>
           </div>
-           <div className="space-y-2">
+           <div className="space-y-1">
             <label className="text-[13px] font-semibold">Fax (Optional)</label>
             <Input
             placeholder="Enter Bank Name" />
           </div>
-          <div className="space-y-2 flex gap-6">
+          <div className="space-y-1 flex gap-4">
             <div className="w-1/2">
               <label className="text-[13px] font-semibold">Financial Year End Month</label>
               <Input
@@ -465,12 +465,12 @@ const ApplicantForm = ({ data, setData }) => {
               placeholder="Select Year"/>
             </div>
           </div>
-           <div className="space-y-2">
+           <div className="space-y-1">
             <label className="text-[13px] font-semibold">Bank Name</label>
             <Input
             placeholder="Enter Bank Name" />
           </div>
-          <div className="space-y-2 flex flex-col">
+          <div className="space-y-1 flex flex-col">
             <label className="text-[13px] font-semibold">Account Type</label>
             <select className="border border-gray-300 p-2 rounded-md">
               <option>Select Account Type</option>
@@ -478,12 +478,12 @@ const ApplicantForm = ({ data, setData }) => {
               <option>Type 2</option>
             </select>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Bank number</label>
             <Input
             placeholder="Enter Bank Name" />
           </div>
-           <div className="space-y-2 flex flex-col">
+           <div className="space-y-1 flex flex-col">
             <label className="text-[13px] font-semibold">Address Type</label>
             <select className="border border-gray-300 p-2 rounded-md">
               <option>Select Address Type</option>
@@ -491,22 +491,22 @@ const ApplicantForm = ({ data, setData }) => {
               <option>Type 2</option>
             </select>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label className="text-[13px] font-semibold">Suite No.</label>
             <Input
             placeholder="Enter Suite No." />
           </div>
-           <div className="space-y-2">
+           <div className="space-y-1">
             <label className="text-[13px] font-semibold">Address No.</label>
             <Input
             placeholder="Enter Address No." />
           </div>
-           <div className="space-y-2">
+           <div className="space-y-1">
             <label className="text-[13px] font-semibold">Street Name</label>
             <Input
             placeholder="Enter Street Name" />
           </div>
-           <div className="space-y-2 flex flex-col">
+           <div className="space-y-1 flex flex-col">
             <label className="text-[13px] font-semibold">Street Type</label>
             <select className="border border-gray-300 p-2 rounded-md">
               <option>Select Street Type</option>
@@ -514,17 +514,17 @@ const ApplicantForm = ({ data, setData }) => {
               <option>Type 2</option>
             </select>
           </div>
-           <div className="space-y-2">
+           <div className="space-y-1">
             <label className="text-[13px] font-semibold">City</label>
             <Input
             placeholder="Enter City" />
           </div>
-           <div className="space-y-2">
+           <div className="space-y-1">
             <label className="text-[13px] font-semibold">Province</label>
             <Input
             placeholder="Province" />
           </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
             <label className="text-[13px] font-semibold">Postal Code</label>
             <Input
             placeholder="Enter Postal Code" />
@@ -544,54 +544,55 @@ const ApplicantForm = ({ data, setData }) => {
         </Button>
       </div>
      
-      {isAssetsExpanded && (
-         <div className="grid grid-cols-1 gap-6">
-             <h4 className="font-bold text-md my-5" >Assets</h4>
-             <div className="space-y-2 flex flex-col">
-            <label className="text-[13px] font-semibold"> Type</label>
-            <select className="border border-gray-300 p-2 rounded-md">
-              <option>Select  Type</option>
-              <option>Type 1</option>
-              <option>Type 2</option>
+     {isAssetsExpanded && (
+    <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
+        {/* Assets Section */}
+        <h4 className="font-bold text-md my-5 col-span-full">Assets</h4>
+        
+        {/* Assets Form Fields */}
+        <div className="space-y-1">
+            <label className="text-[13px] font-semibold">Type</label>
+            <select className="border border-gray-300 p-2 rounded-md w-full">
+                <option>Select Type</option>
+                <option>Type 1</option>
+                <option>Type 2</option>
             </select>
-          </div>
-          <div className="space-y-2">
+        </div>
+        <div className="space-y-1">
             <label className="text-[13px] font-semibold">Description</label>
-            <Input
-            placeholder="e.g., Toyota Corolla 2020" />
-          </div>
-           <div className="space-y-2">
-            <label className="text-[13px] font-semibold">value</label>
-            <Input
-            placeholder="$0.00 " />
-          </div>
-          <h4 className="font-bold text-md my-5" >Liabilities</h4>
-           <div className="space-y-2 flex flex-col">
-            <label className="text-[13px] font-semibold"> Type</label>
-            <select className="border border-gray-300 p-2 rounded-md">
-              <option>Select  Type</option>
-              <option>Type 1</option>
-              <option>Type 2</option>
+            <Input placeholder="e.g., Toyota Corolla 2020" />
+        </div>
+        <div className="space-y-1">
+            <label className="text-[13px] font-semibold">Value</label>
+            <Input placeholder="$0.00" />
+        </div>
+
+        {/* Liabilities Section */}
+        <h4 className="font-bold text-md my-5 col-span-full">Liabilities</h4>
+        
+        {/* Liabilities Form Fields */}
+        <div className="space-y-1">
+            <label className="text-[13px] font-semibold">Type</label>
+            <select className="border border-gray-300 p-2 rounded-md w-full">
+                <option>Select Type</option>
+                <option>Type 1</option>
+                <option>Type 2</option>
             </select>
-          </div>
-          <div className="space-y-2">
+        </div>
+        <div className="space-y-1">
             <label className="text-[13px] font-semibold">Description</label>
-            <Input
-            placeholder="e.g., Toyota Corolla 2020" />
-          </div>
-           <div className="space-y-2">
+            <Input placeholder="e.g., Toyota Corolla 2020" />
+        </div>
+        <div className="space-y-1">
             <label className="text-[13px] font-semibold">Monthly Payment</label>
-            <Input
-            placeholder="$0.00 " />
-          </div>
-          <div className="space-y-2">
+            <Input placeholder="$0.00" />
+        </div>
+        <div className="space-y-1">
             <label className="text-[13px] font-semibold">Balance</label>
-            <Input
-            placeholder="$0.00 " />
-          </div>
-         </div>
-         
-      )}
+            <Input placeholder="$0.00" />
+        </div>
+    </div>
+)}
     </div>
   );
 };

@@ -117,30 +117,30 @@ export default function MyDeals() {
 
   // Handle the 'Claim' action for unassigned deals
   const handleClaimDeal = async (deal) => {
-    if (assigningId || !userUid) {
-      return;
+  if (assigningId || !userUid) {
+    return;
+  }
+
+  setAssigningId(deal.id);
+
+  try {
+    const { error } = await supabaseBrowser
+      .from('deals')
+      .update({
+        assigned_to: userUid,
+        status: "Assigned", // <-- Change the status here
+        updated_at: new Date().toISOString(),
+        assigned_date: new Date().toISOString(),
+      })
+      .eq('id', deal.id);
+
+    if (error) {
+      throw error;
     }
 
-    setAssigningId(deal.id);
-
-    try {
-      const { error } = await supabaseBrowser
-        .from('deals')
-        .update({
-          assigned_to: userUid,
-          status: "Assigned",
-          updated_at: new Date().toISOString(),
-          assigned_date: new Date().toISOString(),
-        })
-        .eq('id', deal.id);
-
-      if (error) {
-        throw error;
-      }
-
-      showToast({ title: "Success", description: "Deal claimed successfully!" });
-      setAssigningId(null);
-      setRefresh(Math.random());
+    showToast({ title: "Success", description: "Deal claimed successfully!" });
+    setAssigningId(null);
+    setRefresh(Math.random());
     } catch (error) {
       console.error("Error claiming deal:", error.message);
       showToast({

@@ -25,7 +25,7 @@ import {
 
 // Define the Deal status options
 const statusOptions = [
-  "Draft",
+  "initiated",
   "Submitted",
   "Under-Review",
   "Approved",

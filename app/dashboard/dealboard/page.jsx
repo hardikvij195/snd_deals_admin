@@ -39,7 +39,7 @@ import PaginationBar from "../_components/Pagination";
 
 // Define the Deal status options
 const statusOptions = [
-  "New",
+  "initial",
   "Contacted",
   "Proposal Sent",
   "Negotiation",
