@@ -257,7 +257,6 @@ export default function MyDeals() {
   return (
     <>
       <div className="min-h-screen bg-white p-4 md:p-6">
-        <h1 className="text-3xl font-bold mb-6 text-gray-800">Deal Assignments</h1>
         <div className="flex flex-col sm:flex-row justify-between items-center mb-4 gap-4">
           <div className="relative w-full">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -274,15 +273,15 @@ export default function MyDeals() {
           </div>
         </div>
         <div className="flex flex-wrap gap-2 mb-8">
-            <button className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 bg-gray-100 rounded-lg border hover:bg-gray-200">
+            <button className="flex items-center gap-2 px-4 py-1 text-[12px] text-gray-700 bg-gray-100 rounded-lg border hover:bg-gray-200">
                 <span>Filter by User</span>
                 <ChevronDown size={16} />
             </button>
-            <button className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 bg-gray-100 rounded-lg border hover:bg-gray-200">
+            <button className="flex items-center gap-2 px-4 py-1 text-[12px] text-gray-700 bg-gray-100 rounded-lg border hover:bg-gray-200">
                 <span>Sort by Date</span>
                 <ChevronDown size={16} />
             </button>
-            <button className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 bg-gray-100 rounded-lg border hover:bg-gray-200">
+            <button className="flex items-center gap-2 px-4 py-1 text-[12px] text-gray-700 bg-gray-100 rounded-lg border hover:bg-gray-200">
                 <span>Sort by Status</span>
                 <ChevronDown size={16} />
             </button>
@@ -315,7 +314,7 @@ export default function MyDeals() {
                 renderDealTable(unassignedDeals, false)
               ) : (
                 <div className="p-4 bg-white rounded-lg shadow-md text-center text-gray-500">
-                  No unassigned deals found with 'initial' status.
+                  No unassigned deals found 
                 </div>
               )}
             </div>
